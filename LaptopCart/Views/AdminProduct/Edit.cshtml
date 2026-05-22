@@ -1,0 +1,54 @@
+﻿@model Product
+
+@* @{
+    ViewData["Title"] = "Edit Product";
+} *@
+
+<div class="card border-2">
+    <div class="card-header ml-0 text-white" style="background-color: darkcyan">
+        <h1 class="p-2 text-center">Edit Product</h1>
+    </div>
+    <div class="card-body mt-3">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+            <input asp-for="ImagePath" hidden />
+            <input asp-for="Id" hidden />
+            <div class="form-floating mb-3">
+                <input asp-for="Name" class="form-control" placeholder="Product Name" />
+                <label asp-for="Name" class="ms-2 text-muted">Name</label>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <textarea asp-for="Description" class="form-control" placeholder="Product Description" style="height: 100px"></textarea>
+                <label asp-for="Description" class="ms-2 text-muted">Description</label>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="Price" class="form-control" placeholder="Price" />
+                <label asp-for="Price" class="ms-2 text-muted">Price</label>
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label text-muted ms-1">Product Image</label>
+                @if (!string.IsNullOrEmpty(Model.ImagePath))
+                    {
+                        <div class="mb-2">
+                        <img src="@Model.ImagePath" alt="Product Image" width="150" height="100" />
+                        </div>
+                    }
+                <input type="file" name="ImageFile" class="form-control" />
+            </div>
+
+            <div class="row justify-content-between">
+                <div class="col-4">
+                    <a asp-action="Index" class="btn btn-secondary w-100">Back</a>
+                </div>
+                <div class="col-6 text-end">
+                    <button type="submit" class="btn text-white w-100" style="background-color: darkcyan">
+                        Update Product
+                    </button>
+                </div>
+            </div>
+            </form>
+        </div>
+</div>

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Product>
+
+<div class="row align-items-center mb-3">
+    <div class="col-md-2">
+        <h2 class="text-secondary">Product List</h2>
+    </div>
+    <div class="col-md-10 text-end">
+        <a asp-action="Create" class="btn btn-dark text-white"><i class="bi bi-plus-circle"></i> Add Product</a>
+    </div>
+</div>
+
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Price</th>
+
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="@item.ImagePath" width="150" height="100" />
+                </td>
+
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Price</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" asp class="btn btn-sm btn-warning"><i class="bi bi-pencil"></i> Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Delete <i class="bi bi-trash"></i></a>
+                </td>
+            </tr>
+
+        }
+
+    </tbody>
+</table>
