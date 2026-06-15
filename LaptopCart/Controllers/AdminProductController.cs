@@ -1,9 +1,11 @@
 ﻿using LaptopCart.Data;
 using LaptopCart.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LaptopCart.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminProductController : Controller
     {
         private readonly ApplicationDbContext _context;
